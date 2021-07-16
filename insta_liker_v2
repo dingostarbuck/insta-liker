@@ -1,0 +1,31 @@
+import pyautogui
+import time
+import keyboard
+
+
+# have the instagram profile you want to like open on your browser, full screen (program assumes 1920x1080)
+# be sure to have a png of the heart icon on instagram saved to the same folder as your project
+
+time.sleep(3)   #Gives us enough time to make sure our browser is set up
+
+
+# move to first picture and click
+pyautogui.moveTo(585,724)
+pyautogui.click()
+time.sleep(1)
+
+while keyboard.is_pressed('q') == False:        # this is our failsafe, if you want to stop the program just hold Q
+    if pyautogui.locateOnScreen('heart_icon.png', grayscale = True) != None:    #find the heart icon in the browser
+        pyautogui.moveTo('heart_icon.png')
+        pyautogui.click()
+        time.sleep(0.5)
+        pyautogui.moveTo(1446, 551)
+        pyautogui.click()
+        time.sleep(0.5)
+
+# program will halt once it gets to the last picture and likes it, because we are operating in grayscale
+# when the heart icon in instagram has been clicked it fills red, but actually it will fill in black to the program
+# and since our reference image is the heart when it's not filled, it will perform it's click function
+# otherwise it stops
+
+#note it doesn't kill the program so technically it is still running.
